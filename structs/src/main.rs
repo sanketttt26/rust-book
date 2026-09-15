@@ -1,28 +1,25 @@
-struct User {
-    active: bool,
-    username: String,
-    email: String,
-    sign_in_count: i32,
+#[derive(Debug)]
+struct Rectangle {
+    width : u32,
+    breadth : u32,
 }
 
-fn build_user(email: String, username: String) -> User {
-    User {
-        active: true,
-        username,
-        email,
-        sign_in_count: 1,
-    }
+fn main() {
+    let rec1 = Rectangle{
+        width : 10,
+        breadth : 10,
+    };
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rec1)
+    );
+    println!("rec1 is {rec1:?}");
 }
 
-struct Color(i32, i32, i32);
-struct Point(i32, i32, i32);
 
 
-fn main ( ){
-
-    //tuple-structs
-    let black = Color(0, 0, 0);
-    let origin = Point(0, 0, 0);
-    let Color(x,y,z) = black;
-    println!("{}",x);
+//area just borrows the rec struct performs actions and returns 
+fn area(rec : &Rectangle) -> u32 {
+    rec.width * rec.breadth
 }
